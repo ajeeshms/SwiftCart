@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwiftCart.Integrations", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwiftCart.Api", "SwiftCart.Api\SwiftCart.Api.csproj", "{6FE23F8E-7A88-44D9-B905-F228D9257171}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwiftCart.Logging", "SwiftCart.Logging\SwiftCart.Logging.csproj", "{45A2F2BB-BE99-437E-9B2B-5DFE02A83D3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6FE23F8E-7A88-44D9-B905-F228D9257171}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FE23F8E-7A88-44D9-B905-F228D9257171}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FE23F8E-7A88-44D9-B905-F228D9257171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45A2F2BB-BE99-437E-9B2B-5DFE02A83D3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45A2F2BB-BE99-437E-9B2B-5DFE02A83D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45A2F2BB-BE99-437E-9B2B-5DFE02A83D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45A2F2BB-BE99-437E-9B2B-5DFE02A83D3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

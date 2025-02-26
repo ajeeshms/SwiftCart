@@ -1,60 +1,4 @@
-﻿<%--<%@ Page Title="Shopping Cart" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="SwiftCart.Cart" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container mt-4">
-        <h2 class="mb-4"><i class="fa fa-shopping-cart"></i> Shopping Cart</h2>
-
-        <asp:Repeater ID="CartRepeater" runat="server">
-            <HeaderTemplate>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>Product</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-            </HeaderTemplate>
-
-            <ItemTemplate>
-                <tr>
-                    <td style="width: 120px;">
-                        <img src='<%# Eval("ImageUrl") %>' class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
-                    </td>
-                    <td><%# Eval("Name") %></td>
-                    <td class="fw-bold text-primary">$<%# Eval("Price", "{0:N2}") %></td>
-                    <td>
-                        <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control text-center" Text='<%# Eval("Quantity") %>' Width="50px"></asp:TextBox>
-                    </td>
-                    <td class="fw-bold text-success">$<%# Eval("Total", "{0:N2}") %></td>
-                    <td>
-                        <asp:Button ID="btnRemove" runat="server" CssClass="btn btn-danger btn-sm"
-                                    Text="Remove" CommandArgument='<%# Eval("ID") %>' OnCommand="btnRemove_Command" />
-                    </td>
-                </tr>
-            </ItemTemplate>
-
-            <FooterTemplate>
-                        </tbody>
-                    </table>
-                </div>
-            </FooterTemplate>
-        </asp:Repeater>
-
-        <div class="d-flex justify-content-between align-items-center mt-4">
-            <h4 class="text-success">Total: $<asp:Label ID="lblTotalPrice" runat="server" Text="0.00"></asp:Label></h4>
-            <asp:Button ID="btnCheckout" runat="server" CssClass="btn btn-success btn-lg" Text="Proceed to Checkout" OnClick="btnCheckout_Click" />
-        </div>
-    </div>
-</asp:Content>
---%>
-
-<%@ Page Title="Cart" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="SwiftCart.Cart" %>
+﻿<%@ Page Title="Cart" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="SwiftCart.Cart" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-5">
@@ -139,7 +83,7 @@
             function updateCartTotal() {
                 let total = 0;
                 document.querySelectorAll(".total-price").forEach(cell => {
-                    total += parseFloat(cell.innerText.replace("$", ""));
+                    total += parseFloat(cell.innerText.replace("$", "").replace(",", ""));
                 });
                 document.getElementById("cartTotal").innerText = "$" + total.toFixed(2);
             }
@@ -163,7 +107,7 @@
 
         function placeOrder() {
             alert('Order placed');
-            window.location.href = '/';
+            window.location.href = '/invoice';
             return false;
         }
     </script>
