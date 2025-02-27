@@ -4,10 +4,17 @@ using System.Data;
 using System.Linq;
 using System.Web.UI.WebControls;
 using DevExpress.Web;
+using SwiftCart.Data.Repository;
 using SwiftCart.Models;
 
 namespace SwiftCart {
     public partial class Default : System.Web.UI.Page {
+
+        private readonly IProductRepository _productRepository;
+
+        public Default() {
+            _productRepository = (IProductRepository)Global.ServiceProvider.GetService(typeof(IProductRepository));
+        }
         protected void Page_Load(object sender, EventArgs e) {
             if (!IsPostBack) {
                 LoadFeaturedImages();
@@ -33,7 +40,7 @@ namespace SwiftCart {
 
         private void LoadProducts(int page, int size) {
 
-            var repo = new Data.Repository.ProductRepository();
+            var repo = _productRepository;
             var products = repo.Get(page, size);
             var productModels = Global.MapperInstance.Map<List<ProductModel>>(products);
 

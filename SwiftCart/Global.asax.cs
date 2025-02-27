@@ -11,12 +11,15 @@ using System.Web.Http;
 using AutoMapper;
 using SwiftCart.Models.Profiles;
 using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.Extensions.DependencyInjection;
+using SwiftCart.Data.Repository;
 
 namespace SwiftCart
 {
     public class Global : HttpApplication
     {
         public static IMapper MapperInstance { get; private set; }
+        public static IServiceProvider ServiceProvider { get; private set; }
 
         void Application_Start(object sender, EventArgs e)
         {
@@ -35,6 +38,14 @@ namespace SwiftCart
                 cfg.AddProfile<CartItemProfile>();
             });
             MapperInstance = mapperConfig.CreateMapper(); // Store globally
+
+            var services = new ServiceCollection();
+
+            // Register repositories and services
+            services.AddSingleton<IProductRepository, ProductRepository>();
+
+            // Build ServiceProvider
+            ServiceProvider = services.BuildServiceProvider();
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 
 namespace SwiftCart.Data.Repository {
-    public class ProductRepository {
+    public class ProductRepository : IProductRepository {
         public IEnumerable<Product> Get(int page, int size) {
 
             try {
