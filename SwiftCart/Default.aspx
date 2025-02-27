@@ -23,7 +23,9 @@
                     <div class="col-md-3 mb-4">
                         <!-- 4 columns per row -->
                         <div class="card shadow-sm">
-                            <img src='<%# Eval("ImageUrl") %>' class="card-img-top" alt="Product Image" style="height: 200px; object-fit: cover;">
+                            <a href="/Product.aspx?ProductId=<%# Eval("ID") %>">
+                                <img src='<%# Eval("ImageUrl") %>' class="card-img-top" alt="Product Image" style="height: 200px; object-fit: cover;">
+                            </a>
                             <div class="card-body">
                                 <h5 class="card-title"><%# Eval("Name") %></h5>
                                 <p class="card-text text-muted"><%# Eval("Description") %></p>
@@ -32,7 +34,7 @@
                                 <asp:Button ID="btnAddToCart" runat="server" CssClass="btn btn-success w-100 mt-2"
                                     Text="Add to Cart" CommandArgument='<%# Eval("ID") %>'
                                     OnCommand="btnAddToCart_Command"
-                                    OnClientClick="updateCartCount(); return true;"/>
+                                    OnClientClick="updateCartCount(); return true;" />
                             </div>
                         </div>
                     </div>
